@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://meshe.kyiv.ua/sitemap.xml

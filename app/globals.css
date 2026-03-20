@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #f1f3f5;
+  --color-foreground: #1a202c;
+
+  --color-primary: #13274c;
+  --color-primary-foreground: #f8fafc;
+
+  --color-secondary: #eaf4f6;
+  --color-secondary-foreground: #f8fafc;
+
+  --color-yellow-dark: #a82a3b;
+  --color-yellow: #df3e4d;
+  --color-accent: #ff5a6b;
+
+  --color-border: #d1d5db;
+
+  --color-surface-dark: #1e2128;
+  --color-surface-dark-alt: #1c1f26;
+  --color-surface-card: #282c35;
+
+  --color-border-accent: rgba(223, 62, 77, 0.3);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@layer utilities {
+  @keyframes slide-in-accent {
+    from {
+      opacity: 0;
+      transform: translateY(-100px);
+      backdrop-filter: blur(0px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      backdrop-filter: blur(16px);
+    }
+  }
+}
+
+@layer utilities {
+  .reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .delay-100 {
+    transition-delay: 100ms;
+  }
+  .delay-200 {
+    transition-delay: 200ms;
+  }
+  .delay-300 {
+    transition-delay: 300ms;
+  }
+  .delay-400 {
+    transition-delay: 400ms;
+  }
+}
+
+@layer components {
+  .text-aligned {
+    @apply text-justify hyphens-auto;
+  }
+
+  .list-marker-logo::before {
+    content: "";
+    @apply inline-block w-4 h-4 mr-2 align-middle -translate-y-0.5;
+    background-image: url("/images/logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+@keyframes logo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.85;
+  }
+}
+
+.animate-logo-pulse {
+  animation: logo-pulse 1.5s ease-in-out infinite;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
